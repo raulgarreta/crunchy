@@ -1,0 +1,23 @@
+*.pyc
+*.log
+.project
+.pydevproject
+org.eclipse.core.resources.prefs
+.settings
+*.kate*
+*~
+*_flymake.*
+*#*
+*.sw[po]
+.DS_Store
+
+# Project files
+local_settings.py
+debug_settings.py
+
+trials
+.vagrant
+static/*
+frontend
+
+
