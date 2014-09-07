@@ -38,7 +38,7 @@
 		</div>
 		<div id="bottonintro">
 	    <div data-role="button" href="#"><img src="img/fbbt.png" width="50" /></div>
-	    <div><a id="loginbutton"><img src="img/twbt.png" width="50" /></a></div>
+	    <div><id="loginbutton"><img src="img/twbt.png" width="50" /></a></div>
 	    <div data-role="button" href="#"><img src="img/emailbt.png" width="50" /></div>
 		</div>
 		</div>
@@ -67,22 +67,18 @@
 
 
 	<div data-role="page" id="topic-list-page">
-        <div data-role="header">
-            
-        </div>
-        <div data-role="content" id="content">
-            <br>
-            <h1><a href="#page1">Your Profile!</a></h1>
-            <div id="topic-list">
-            </div>
-            <a href="" id="show-button" data-role="button" onclick="showSummary(); return false">Show Me!</a>
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#page2"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
+        <div data-role="content" id="content-today">
+           
         </div>
     </div>
 
     <div data-role="page" id="article-list-page">
-        <div data-role="header" data-add-back-btn="true">
-            <h1>Your Digest!</h1>
-        </div>
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#page2"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
         <div data-role="content" id="content">
             <br>
             <div id="article-list">
