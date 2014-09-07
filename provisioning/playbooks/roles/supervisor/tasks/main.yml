@@ -1,0 +1,17 @@
+# packages
+
+- name: Install packages
+  apt: pkg={{ item }}
+       state=installed
+  with_items:
+    - supervisor
+  sudo: yes
+
+# supervisor setup
+
+- name: Create supervisord config
+  template: src=supervisor.conf.j2
+            dest={{supervisor_config_dir }}/supervisord.conf
+  sudo: yes
+  notify:
+    - restart supervisord

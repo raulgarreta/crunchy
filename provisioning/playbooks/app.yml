@@ -1,0 +1,22 @@
+---
+- name: App servers
+  hosts: app_servers
+  sudo: yes
+
+  vars:
+    nginx_server_name: "{{ nginx_app_server_name }}"
+    nginx_serve_user_docs: True
+
+  roles:
+    - { role: secrets, tags: ["pre", "secrets"] }
+    - { role: environment, tags: ["pre", "environment"] }
+    - { role: common, tags: ["common"] }
+    - { role: ssh, tags: ["ssh"] }
+    - { role: virtualenv, tags: ["virtualenv"] }
+    - { role: app_code, tags: ["app", "app.code"] }
+    - { role: app_static, tags: ["app", "app.static"] }
+    - { role: nginx, tags: ["nginx"] }
+    - { role: supervisor, tags: ["supervisor"] }
+    - { role: uwsgi, tags: ["uwsgi"] }
+
+

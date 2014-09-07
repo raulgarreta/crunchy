@@ -1,0 +1,7 @@
+- name: Set up authorized_keys
+  authorized_key: user="{{ user }}"
+                  key="{{ item }}"
+                  state=present
+  with_items: ssh_authorized_keys
+  tags:
+    - ssh.authorized_keys

@@ -1,0 +1,14 @@
+# -*- mode: yaml -*-
+django_env: &django_env
+  DJANGO_SETTINGS_MODULE: "{{ django_settings_module }}"
+  ML_DJANGO_SECRET_KEY: "{{ django_secret_key }}"
+  # Postgres
+  ML_POSTGRES_HOST: "{{ postgres_db_host }}"
+  ML_POSTGRES_PORT: "{{ postgres_db_port }}"
+  ML_POSTGRES_NAME: "{{ postgres_db_name }}"
+  ML_POSTGRES_USER: "{{ postgres_db_user }}"
+  ML_POSTGRES_PASSWORD: "{{ postgres_db_password }}"
+
+environment_vars:
+  - key: django
+    value: *django_env

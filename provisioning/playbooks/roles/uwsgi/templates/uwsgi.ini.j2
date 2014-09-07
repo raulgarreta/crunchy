@@ -1,0 +1,29 @@
+[uwsgi]
+master = True
+workers = 5
+max-requests = 1
+vacuum = True
+min-worker-lifetime = 120
+
+uid = {{ user }}
+gid = {{ user }}
+
+socket = {{ uwsgi_socket_file }}
+chmod-socket = 666
+
+pidfile = {{ uwsgi_pid_file }}
+
+logdate = True
+logto = {{ uwsgi_log_file }}
+logfile-chown = True
+
+touch-reload = {{ uwsgi_reload_file }}
+
+# Application settings
+
+virtualenv = {{ venv_path }}
+chdir = {{ code_dir }}
+module = crunchy.wsgi:application
+{% for key, value in django_env.iteritems() %}
+env = {{ key }}={{ value }}
+{% endfor %}

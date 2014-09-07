@@ -1,0 +1,5 @@
+[onebox_servers]
+192.168.9.10
+
+[vagrant:children]
+onebox_servers

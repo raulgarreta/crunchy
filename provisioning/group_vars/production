@@ -1,0 +1,23 @@
+# -*- mode: yaml -*-
+
+requirements_file: "{{ code_dir }}/requirements/development.txt"
+
+code_version: "master"
+
+django_settings_module: "crunchy.settings.production"
+django_secret_key: 'bs-ll4(fe5aj+q135x1ol+fqfp7t21_6r1!=(q8aqycosvzwwz'
+
+# Role: nginx
+nginx_app_server_name: "app.crunchy.com"
+nginx_api_server_name: "api.crunchy.com"
+nginx_health_check: True
+nginx_health_check_path: "/admin/"
+nginx_serve_static: True
+
+# Role: ssh
+ssh_authorized_keys:
+  - "{{ ssh_keys.raul }}"
+
+# Role: postgres
+postgres_db_user: "crunchy"
+postgres_db_password: "crunchy"

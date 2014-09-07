@@ -1,0 +1,57 @@
+# Packages
+
+
+- name: Install apt packages
+  apt: pkg={{ item }}
+       state=installed
+  with_items:
+    # psycopg2 deps
+    - libpq-dev
+    # PIL deps
+    - python-dev
+    # lxml deps
+    - libxml2-dev
+    - libxslt1-dev
+
+  tags:
+    - app.packages
+    - app.packages.apt
+
+
+# Update app code
+
+
+- name: Create code directories
+  file: path={{ code_dir }}
+        state=directory
+        owner={{ user }}
+        group=www-data
+  when: not dev
+  tags:
+    - app.code.update
+
+
+- name: Clone/update app code
+  git: repo={{ repo_uri }}
+       dest={{ code_dir }}
+       version={{ code_version }}
+       accept_hostkey=yes
+  when: not dev
+  sudo_user: "{{ user }}"
+  tags:
+    - app.code.update
+  notify:
+    - restart uwsgi
+
+
+# App requirements
+
+
+- name: Install app requirements
+  pip: requirements={{ requirements_file }}
+       virtualenv={{ venv_path }}
+       chdir={{ code_dir }}
+  sudo_user: "{{ user }}"
+  tags:
+    - app.code.deps
+

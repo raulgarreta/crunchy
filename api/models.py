@@ -45,14 +45,9 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, related_name='profile')
     keywords = models.ManyToManyField(Keyword, related_name='users',
                                       through=KeywordScore)
-    history = models.ManyToManyField(News, related_name='users')
-    last_news = models.ManyToManyField(News, related_name='users')
+    history = models.ManyToManyField(News, related_name='users_history')
+    last_news = models.ManyToManyField(News, related_name='users_last_news')
     key_token = models.CharField(max_length=255, blank=True, null=True)
-
-    class Meta:
-        unique_together = ('member_id', 'user')
-        verbose_name = 'User Profile'
-        verbose_name_plural = 'User Profiles'
 
 
 @receiver(post_save, sender=User)

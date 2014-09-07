@@ -1,0 +1,7 @@
+---
+- include: "playbooks/onebox.yml"
+- include: "playbooks/db.yml"
+- include: "playbooks/management.yml"
+- include: "playbooks/app.yml"
+- include: "playbooks/api.yml"
+

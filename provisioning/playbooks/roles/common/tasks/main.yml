@@ -1,0 +1,29 @@
+# Locale setup
+
+
+- name: Update default locale to 'en_US.utf8'
+  command: update-locale LC_ALL="en_US.utf8"
+  tags:
+    - common.locale
+
+
+# Global packages
+
+
+- name: Install apt packages
+  apt: pkg={{ item }}
+       state=installed
+       cache_valid_time={{ apt_cache_max_age }}
+       update_cache=yes
+  with_items:
+    - git
+    - vim
+    - curl
+    - unzip
+    - htop
+    - make
+    - python-pip
+    - postgresql-client-9.3
+  tags:
+    - common.packages
+    - common.packages.apt

@@ -1,0 +1,74 @@
+# Packages
+
+
+- name: Install apt packages
+  apt: pkg=nginx
+       state=installed
+  tags:
+    - nginx.packages
+    - nginx.packages.apt
+
+
+# nginx global conf
+
+
+- name: Copy nginx.conf
+  template: src=nginx_conf.j2
+            dest=/etc/nginx/nginx.conf
+  tags:
+    - nginx.conf
+    - nginx.conf.global
+  notify:
+    - restart nginx
+
+
+# default site
+
+
+- name: Copy nginx default site conf
+  template: src=nginx_site_default.j2
+            dest=/etc/nginx/sites-available/default
+  tags:
+    - nginx.conf
+    - nginx.conf.sites
+    - nginx.conf.sites.default
+  notify:
+    - restart nginx
+
+
+- name: Enable default site
+  file: path=/etc/nginx/sites-enabled/default
+        src=/etc/nginx/sites-available/default
+        state=link
+  tags:
+    - nginx.conf
+    - nginx.conf.sites
+    - nginx.conf.sites.default
+  notify:
+    - restart nginx
+
+
+# crunchy site
+
+
+- name: Copy nginx crunchy site conf
+  template: src=nginx_site_crunchy.j2
+            dest=/etc/nginx/sites-available/crunchy
+  tags:
+    - nginx.conf
+    - nginx.conf.sites
+    - nginx.conf.sites.crunchy
+  notify:
+    - restart nginx
+
+
+- name: Enable default site
+  file: path=/etc/nginx/sites-enabled/crunchy
+        src=/etc/nginx/sites-available/crunchy
+        state=link
+  tags:
+    - nginx.conf
+    - nginx.conf.sites
+    - nginx.conf.sites.crunchy
+  notify:
+    - restart nginx

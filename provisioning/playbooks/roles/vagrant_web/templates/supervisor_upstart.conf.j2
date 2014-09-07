@@ -1,0 +1,9 @@
+description "supervisor"
+
+start on vagrant-mounted
+
+stop on runlevel [06]
+
+respawn
+
+exec /usr/bin/supervisord --nodaemon --configuration /etc/supervisor/supervisord.conf

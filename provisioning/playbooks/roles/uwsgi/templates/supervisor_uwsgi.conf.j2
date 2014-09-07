@@ -1,0 +1,12 @@
+[program:uwsgi]
+command = uwsgi --ini {{ uwsgi_ini_file }}
+autostart = true
+
+user = {{ user }}
+directory = {{ code_dir }}
+
+stdout_logfile = {{ uwsgi_supervisor_out_log_file }}
+stdout_logfile_backups = 5
+
+stderr_logfile = {{ uwsgi_supervisor_err_log_file }}
+stderr_logfile_backups = 5

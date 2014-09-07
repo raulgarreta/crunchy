@@ -1,0 +1,22 @@
+# Create environment vars
+
+- name: Create environmet vars directory
+  file: state=directory
+        dest="{{ environment_envvars_dir }}"
+        owner={{ user }}
+        owner={{ user }}
+  tags:
+    - environment
+    - environment.vars
+    - environment.create_dir
+
+
+- name: Generate environments files
+  template: src=env.sh.j2
+            dest="{{ environment_envvars_dir }}/{{ item.key }}"
+            owner={{ user }}
+  with_items: environment_vars
+  tags:
+    - environment
+    - environment.vars
+    - environment.create_files

@@ -1,0 +1,10 @@
+# Run migrations
+
+- name: Run migrations, create app tables
+  shell: executable={{ shell }}
+         chdir="{{ code_dir }}"
+         {{ venv_python }} manage.py syncdb --noinput && {{ venv_python }} manage.py migrate
+  environment: django_env
+  sudo_user: "{{ user }}"
+  tags:
+    - app.db.migrate

@@ -1,0 +1,30 @@
+# -*- mode: yaml -*-
+ansible_ssh_private_key_file: "~/.vagrant.d/insecure_private_key"
+ansible_ssh_user: "vagrant"
+
+dev: True
+proxy_port: 8080
+
+user: "vagrant"
+user_home: "/home/{{ user }}"
+
+code_dir: "/vagrant"
+
+users_tmp_dumpdata_path: "{{ tmp_dir }}/users_dumpdata.json"
+admin_user_email: "rgarreta@gmail.com"
+admin_user_hashed_password: "pbkdf2_sha256$10000$s6rGuDpYVbch$9Ulw0fvTxjHpRRELO9t/6s/rz1PRgCP5OBmKRINRQig="
+
+django_settings_module: "crunchy.settings.vagrant"
+django_secret_key: 'bs-ll4(fe5aj+q135x1ol+fqfp7t21_6r1!=(q8aqycosvzwwz'
+
+# Role: nginx
+nginx_serve_static: True
+
+# Role: postgres
+postgres_db_user: "crunchy"
+postgres_db_password: "crunchy"
+
+sentry_public_key: ''
+sentry_secret_key: ''
+sentry_project_id: ''
+

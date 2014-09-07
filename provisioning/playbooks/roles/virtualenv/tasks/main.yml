@@ -1,0 +1,44 @@
+# Packages
+
+
+- name: Install pip packages
+  pip: name={{ item }} state=present
+  with_items:
+    - virtualenv
+    - virtualenvwrapper
+  tags:
+    - virtualenv.packages
+    - virtualenv.packages.pip
+
+
+# Virtualenv wrapper setup
+
+
+- name: Modify bashrc for virtualenvwrapper (1/2)
+  lineinfile: dest={{ user_home }}/.bashrc
+              regexp="^export WORKON_HOME"
+              line="export WORKON_HOME={{ venv_workon_path }}"
+              state=present
+  sudo_user: "{{ user }}"
+  tags:
+    - virtualenv.wrapper
+
+
+- name: Modify bashrc for virtualenvwrapper (2/2)
+  lineinfile: dest={{ user_home }}/.bashrc
+              regexp="^source /usr/local/bin/virtualenvwrapper.sh"
+              line="source /usr/local/bin/virtualenvwrapper.sh"
+              state=present
+  sudo_user: "{{ user }}"
+  tags:
+    - virtualenv.wrapper
+
+
+- name: Virtualenv wrapper files perm fixes
+  file: path={{ venv_workon_path }}
+        owner={{ user }}
+        group={{ user }}
+        recurse=yes
+        state=directory
+  tags:
+    - virtualenv.wrapper

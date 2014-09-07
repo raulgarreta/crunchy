@@ -1,0 +1,27 @@
+# supervisord programs start before vagrant sync folders are mounted
+# so we need to restart those apps that need the code in place.
+# http://razius.com/articles/launching-services-after-vagrant-mount/
+
+# Disable supervisord SysVinit on boot
+- name: Disable supervisord from sysvinit
+  shell: update-rc.d -f supervisor remove
+
+
+# Create upstart init script
+- name: Create supervisord upstart script
+  template: src=supervisor_upstart.conf.j2 dest=/etc/init/supervisor.conf
+
+
+# Initial data, create an admin user.
+- name: Copy users initial dump data
+  template: src=users_dumpdata.json.j2
+            dest={{ users_tmp_dumpdata_path }}
+  sudo_user: "{{ user }}"
+
+- name: Load initial users dump data
+  django_manage: app_path={{ code_dir }}
+                 command=loaddata
+                 fixtures={{ users_tmp_dumpdata_path }}
+                 virtualenv={{ venv_path }}
+  environment: django_env
+  sudo_user: "{{ user }}"

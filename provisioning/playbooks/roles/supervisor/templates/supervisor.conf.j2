@@ -1,0 +1,24 @@
+[unix_http_server]
+file = {{ supervisor_socket_file }}   ; (the path to the socket file)
+
+[supervisord]
+nodaemon = false               ; (start in foreground if true;default false)
+minfds = 1024                  ; (min. avail startup file descriptors;default 1024)
+minprocs = 200                 ; (min. avail process descriptors;default 200)
+pidfile = {{ supervisor_pid_file }} ; (supervisord pidfile;default supervisord.pid)
+
+logfile = {{ supervisor_log_file }}    ; (main log file)
+logfile_maxbytes = 50MB               ; (max main logfile bytes b4 rotation;default 50MB)
+logfile_backups = 10                  ; (num of main logfile rotation backups;default 10)
+loglevel = {{ supervisor_log_level }} ; (log level;default info; others: debug,warn,trace)
+
+environment = HOME="{{ user_home }}" ; (env vars for the supervisord and its child processes environments)
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory  =  supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisorctl]
+serverurl = unix://{{ supervisor_socket_file }} ; use a unix:// URL  for a unix socket
+
+[include]
+files  =  {{ supervisor_config_include_dir }}/*.conf

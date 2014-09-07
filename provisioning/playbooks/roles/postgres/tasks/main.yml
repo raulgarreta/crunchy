@@ -1,0 +1,84 @@
+# Packages
+
+
+- name: Install apt packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - postgresql-9.3
+    - postgresql-contrib-9.3
+    - postgresql-server-dev-9.3
+    - python-psycopg2
+  tags:
+    - postgres.packages
+    - postgres.packages.apt
+
+
+# postgres config
+
+- name: Copy postgresql.conf file
+  template: src=postgresql.conf.j2
+            dest=/etc/postgresql/9.3/main/postgresql.conf
+  tags:
+    - postgres.config
+    - postgres.config.postgresql
+  when: not dev
+  notify:
+    - restart postgres
+
+
+- name: Copy pg_hba.conf file
+  template: src=pg_hba.conf.j2
+            dest=/etc/postgresql/9.3/main/pg_hba.conf
+  tags:
+    - postgres.config
+    - postgres.config.pg_hba
+  when: not dev
+  notify:
+    - reload postgres
+
+
+# pgpass file
+
+
+- name: Create .pgpass file
+  template: src=pgpass.j2
+            dest={{ postgres_pgpass_file }}
+  sudo_user: "{{ user }}"
+  tags:
+    - postgres.pgpass
+    - postgres.pgpass.create
+
+
+- name: Change .pgpass file perms
+  file: dest={{ postgres_pgpass_file }}
+        mode="600"
+  tags:
+    - postgres.pgpass
+    - postgres.pgpass.perms
+
+
+
+# Database setup
+
+
+- name: Create database
+  postgresql_db: db={{ postgres_db_name }}
+                 encoding='utf8'
+                 lc_collate='en_US.UTF-8'
+                 lc_ctype='en_US.UTF-8'
+                 template='template0'
+  sudo_user: "{{ postgres_user }}"
+  tags:
+    - postgres.db
+    - postgres.db.create
+
+
+- name: Create database role
+  postgresql_user: user={{ postgres_db_user }}
+                   password={{ postgres_db_password }}
+                   state=present
+                   role_attr_flags=SUPERUSER
+  sudo_user: "{{ postgres_user }}"
+  tags:
+    - postgres.db
+    - postgres.db.user

@@ -1,0 +1,46 @@
+# Packages
+
+
+- name: Install apt packages
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - nodejs-legacy
+    - npm
+  tags:
+    - web.static.packages.apt
+
+
+- name: Install less compiler
+  npm: name=less
+       global=yes
+       state=present
+  tags:
+    - web.static.packages.npm
+
+
+# Collect
+
+
+- name: Collect app static files
+  django_manage: app_path={{ code_dir }}
+                 command=collectstatic
+                 virtualenv={{ venv_path }}
+  environment: django_env
+  when: nginx_serve_static
+  sudo_user: "{{ user }}"
+  tags:
+    - web.static.collect
+
+
+# Compress
+
+
+#- name: Compress app static files
+#  django_manage: app_path={{ code_dir }}
+#                 command=compress
+#                 virtualenv={{ venv_path }}
+#  environment: django_env
+#  when: nginx_serve_static
+#  sudo_user: "{{ user }}"
+#  tags:
+#    - web.static.compress

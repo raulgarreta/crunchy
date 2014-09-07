@@ -1,0 +1,57 @@
+# Packages
+
+
+- name: Install global python packages
+  pip: name={{ item }} state=present
+  with_items:
+    - uwsgi
+  tags:
+    - uwsgi.packages
+    - uwsgi.packages.pip
+
+
+# Files setup (config, run, logs)
+
+
+- name: Create config and run directories
+  file: path={{ item }}
+        state=directory
+        owner={{ user }}
+        group=www-data
+  with_items:
+    - "{{ uwsgi_config_dir }}"
+    - "{{ uwsgi_log_dir }}"
+  tags:
+    - uwsgi.files
+
+
+- name: Create uwsgi files with apropiate perms
+  file: path={{ item }}
+        state=touch
+        owner={{ user }}
+  with_items:
+    - "{{ uwsgi_reload_file }}"
+    - "{{ uwsgi_log_file }}"
+  tags:
+    - uwsgi.files
+
+
+- name: Copy uwsgi config ini file
+  template: src=uwsgi.ini.j2
+            dest={{ uwsgi_ini_file }}
+  tags:
+    - uwsgi.files
+  notify:
+    - restart uwsgi
+
+
+# supervisor setup
+
+
+- name: Create supervisord uwsgi config
+  template: src=supervisor_uwsgi.conf.j2
+            dest={{ supervisor_config_include_dir }}/uwsgi.conf
+  tags:
+    - uwsgi.supervisor
+  notify:
+    - restart supervisord

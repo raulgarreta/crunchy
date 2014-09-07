@@ -1,0 +1,133 @@
+# -*- mode: yaml -*-
+
+# Ansible
+
+ansible_ssh_user: "ubuntu"
+
+
+# Global
+
+dev: False
+proxy_port: False
+
+shell: "/bin/bash"
+
+user: "ubuntu"
+user_home: "/home/{{ user }}"
+
+config_dir: "/etc"
+tmp_dir: "/tmp"
+run_dir: "/run"
+log_dir: "/var/log"
+
+
+# Role: common
+
+# Update the apt cache if older than: 4 days (345600s)
+apt_cache_max_age: 345600
+
+
+# Role: environments
+
+environment_envvars_dir: "{{ user_home }}/envvars"
+
+
+# Role: app
+
+code_version: "master"
+
+code_dir: "{{ user_home }}/code"
+
+repo_user: "git"
+repo_host: "github.com"
+repo_path: "raulgarreta/crunchy.git"
+
+repo_uri: "{{ repo_user }}@{{ repo_host }}:{{ repo_path }}"
+
+requirements_file: "{{ code_dir }}/requirements/development.txt"
+
+sentry_project_id: ''
+sentry_public_key: ''
+sentry_secret_key: ''
+
+
+# Role: redis
+
+redis_host: 'localhost'
+redis_port: 6379
+
+
+# Role: postgres
+
+postgres_user: "postgres"
+
+postgres_db_name: "crunchy_db"
+postgres_db_host: "localhost"
+postgres_db_port: "5432"
+
+postgres_pgpass_file: "{{ user_home }}/.pgpass"
+
+
+# Role: virtualenv
+
+venv_name: "ml"
+venv_workon_path: "{{ user_home }}/.virtualenvs"
+venv_path: "{{ venv_workon_path }}/{{ venv_name }}"
+venv_site_packages: "{{ venv_path }}/lib/python2.7/site-packages"
+venv_bin: "{{ venv_path }}/bin"
+venv_python: "{{ venv_bin }}/python"
+venv_activate: "{{ venv_bin }}/activate"
+
+
+# Role: sphinx
+
+sphinx_docs_dir: "{{ code_dir }}/docs"
+sphinx_user_docs_dir: "{{ sphinx_docs_dir }}/users"
+
+
+# Role: supervisor
+
+supervisor_socket_file: "{{ run_dir }}/supervisor.sock"
+
+supervisor_log_dir:  "{{ log_dir }}/supervisor"
+supervisor_log_file:  "{{ supervisor_log_dir }}/supervisord.log"
+supervisor_log_level: "info"
+
+supervisor_pid_file: "{{ run_dir }}/supervisord.pid"
+supervisor_config_dir: "{{ config_dir }}/supervisor"
+supervisor_config_include_dir: "{{ supervisor_config_dir }}/conf.d"
+
+
+# Role: uwsgi
+
+uwsgi_run_dir: "{{ tmp_dir }}"
+uwsgi_pid_file: "{{ uwsgi_run_dir }}/uwsgi.pid"
+uwsgi_socket_file: "{{ uwsgi_run_dir }}/uwsgi.sock"
+
+uwsgi_config_dir: "{{ config_dir }}/crunchy"
+uwsgi_reload_file: "{{ uwsgi_config_dir }}/uwsgi.reload"
+uwsgi_ini_file: "{{ uwsgi_config_dir }}/uwsgi.ini"
+
+uwsgi_log_dir: "{{ log_dir }}/uwsgi"
+uwsgi_log_file: "{{ uwsgi_log_dir }}/uwsgi.log"
+
+uwsgi_supervisor_out_log_file: "{{ supervisor_log_dir }}/uwsgi_stdout.log"
+uwsgi_supervisor_err_log_file: "{{ supervisor_log_dir }}/uwsgi_stderr.log"
+
+
+# Role: nginx
+nginx_app_server_name: "localhost"
+nginx_api_server_name: "localhost"
+nginx_serve_static: True
+nginx_serve_user_docs: True
+
+nginx_health_check: False
+nginx_health_check_path: "/example/"
+
+
+# Role: ssh
+
+ssh_authorized_keys: []
+
+ssh_keys:
+  raul: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCrgGoThPOkLo3K71hPEEyrRqc53S4LGNwNeBSK4X4XCRYJZIGZBbzbSSnYADXHOjgPpwfP4RHzMz2nltNxB+4jZl41DyUN99qBX05vJLyR4SVkdcl0GlIO4ZHC4F00BYpS3O13YiGybicpOy7LCHhd2F+oEjMuCM0XvDIjkuWcxJJCTMXC7HGxl/BMBleZgQjSDXPJgC6ggrIM8Nfv4sPAaBSWtiY4NM74V68IcLgM9qOn0Af/a/Nz71+Bsn/kWbqa4M+RL0VYClZLgoWrPrdGJNG1FdD53oR4KMsC0chPFDHwAENZ+GT6m67VZ63WUSuShUVbaPqUK6TzUOdp7gUt raul@einstein"
