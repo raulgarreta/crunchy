@@ -78,6 +78,38 @@ function debugMode() {
 
 };
 
+$( "#loginbutton" ).click(function() {
+  $.ajaxSetup({
+        beforeSend : function(xhr, settings) {
+            xhr.setRequestHeader("Authorization", "Token " + API_TOKEN);
+        }
+    });
+
+    DEBUG = true;
+    $.ajax({
+        url : URL + "/api/login/?twitter_account=" + $("#search1").val(),
+        type : "GET",
+        data : {},
+        success : function(result) {
+
+            result = eval(result)
+            $('#categories').empty();
+
+             for (var i in result) {
+                n = result[i]
+                $('#categories').append(
+                    '<input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a" checked="checked"><label for="checkbox-v-2a">' + n[0] + '</label>');
+             }
+
+            $.mobile.changePage('#page2');
+        },
+        error : function(e) {
+            alert('Error: ' + e);
+        }
+    });
+
+});
+
 
 //OK
 function logout() {

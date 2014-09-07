@@ -23,23 +23,6 @@
 
 
 <script src="js/scripts.js"></script>
-
-
-<style type="text/css">
-.prof_img {
-	height: 60px;
-	width: 60px;
-	margin-left: 10px;
-	margin-top: 10px;
-}
-</style>
-
-
-<script type="text/javascript">
-    app.initialize();
-</script>
-
-
 </head>
 <body>
 	<!-- ---------------- -->
@@ -48,68 +31,65 @@
 	<div data-role="page" id="page1">
 		
 		<div data-role="content">
+		
+		<form id="form1">
+		<div id="textsearch">
+        <input type="search" name="search-1" placeholder="twitter" id="search1" value="">
+		</div>
 		<div id="bottonintro">
 	    <div data-role="button" href="#"><img src="img/fbbt.png" width="50" /></div>
-	    <div><a href="#page2"><img src="img/twbt.png" width="50" /></a></div>
+	    <div><a href="#page2" id="loginbutton"><img src="img/twbt.png" width="50" /></a></div>
 	    <div data-role="button" href="#"><img src="img/emailbt.png" width="50" /></div>
 		</div>
 		</div>
 		
 	</div>
-	
+
 	<!-- preferences -->
+
 	<div data-role="page" id="page2">
 		<div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
 		<div style="margin-top:20px"><img src="img/actionbar.png" width="100%"></div>
 	    </div>
 	    <div data-role="content">
+	    	<h1 style="color:#fff">Your trends:</h1>
+	    	<form>
+		    <fieldset data-role="controlgroup" id="categories">
+		      
+		    </fieldset>
+		</form>
 	    </div>
 	    <div data-role="footer" data-position="fixed" style="padding:0; margin:0; background-color:#282b36; border:none">
-	    <a id="#page3" style="padding:0;margin:0; border:none; background-color:#282b36""><img src="img/bt1.png" height="100%" width="100%" style="border:none"></a>
+	    <a href="#topic-list-page" style="padding:0;margin:0; border:none; background-color:#282b36""><img src="img/bt1.png" height="100%" width="100%" style="border:none"></a>
 	    </div>
 	</div>
 
 
 
 	<div data-role="page" id="topic-list-page">
-
-        <div data-role="header" data-add-back-btn="true">
-            <h1>Your Profile!</h1>
+        <div data-role="header">
+            
         </div>
-
         <div data-role="content" id="content">
-
             <br>
-
+            <h1><a href="#page1">Your Profile!</a></h1>
             <div id="topic-list">
-
             </div>
-
-            <a href="" id = "show-button" data-role="button" onclick="showSummary(); return false">Show Me!</a>
-
+            <a href="" id="show-button" data-role="button" onclick="showSummary(); return false">Show Me!</a>
         </div>
     </div>
 
-
     <div data-role="page" id="article-list-page">
-
         <div data-role="header" data-add-back-btn="true">
             <h1>Your Digest!</h1>
         </div>
-
         <div data-role="content" id="content">
-
             <br>
-
             <div id="article-list">
-
             </div>
-
-            <a href="" id = "show-button" data-role="button" onclick="play(); return false">Play!</a>
-
+            <a href="" id="show-button" data-role="button" onclick="play(); return false">Play!</a>
         </div>
     </div>
-
 
 </body>
 </html>
