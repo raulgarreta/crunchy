@@ -125,3 +125,27 @@ label.error {
 .event-detail-grid {
 	margin-bottom: 10px;
 }
+
+#page1{
+    background: url('../img/bgmain.png') top center no-repeat !important;
+    background-attachment: fixed;
+    background-size: 100% 100% !important;
+    background-color: #000000;
+    overflow: hidden;
+    text-shadow: none;
+    font-family: 'Open Sans Condensed';
+    width: 100%;
+    font-size: 100%;
+}
+
+#bottonintro{
+	display: inline;
+	position: absolute;
+	bottom: 50px;
+	margin-left:60px;
+}
+
+#bottonintro div{
+	float:left;
+	margin: 0px 5px;
+}
