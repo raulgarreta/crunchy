@@ -12,9 +12,15 @@ import com.nerdability.android.rss.domain.Article;
 
 public class ArticleListActivity extends FragmentActivity implements ArticleListFragment.Callbacks {
 
-    private boolean mTwoPane;
+    //private boolean mTwoPane;
     private DbAdapter dba;
-    
+
+    private static boolean mTwoPane; // change to static
+
+    public static boolean isTwoPane() {
+        return mTwoPane;
+    }
+
     public ArticleListActivity(){}
 
     @Override
