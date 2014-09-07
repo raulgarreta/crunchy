@@ -124,7 +124,7 @@ def recommend(user):
         father_category = category[0]
         articles.extend(list(News.objects.filter(date__gte=datetime.now() - timedelta(days=delta_days))
                 .filter(tag=father_category)
-                .exclude(pk__in=[article.id for article in articles])
+                .exclude(title__in=[article.title for article in articles])
                 .order_by('-date')[0:number_of_articles]))
 
     for n in articles:
