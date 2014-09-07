@@ -38,7 +38,7 @@
 		</div>
 		<div id="bottonintro">
 	    <div data-role="button" href="#"><img src="img/fbbt.png" width="50" /></div>
-	    <div><id="loginbutton"><img src="img/twbt.png" width="50" /></a></div>
+	    <div><a href="#page2"><img src="img/twbt.png" width="50" /></a></div>
 	    <div data-role="button" href="#"><img src="img/emailbt.png" width="50" /></div>
 		</div>
 		</div>
@@ -70,21 +70,26 @@
         <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
 		<div style="margin-top:20px"><a href="#page2"><img src="img/actionbar.png" width="100%"></a></div>
 	    </div>
-        <div data-role="content" id="content-today">
-           
+        <div data-role="content" id="content-today" style="padding: 0; margin: 0;">
+           <div style="margin-top:53%; border:none; width="100%"><a href="#article-list-page" style="border:none"><img src="img/today.png" width="100%" style="border:none"></a></div>
         </div>
     </div>
 
     <div data-role="page" id="article-list-page">
         <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
-		<div style="margin-top:20px"><a href="#page2"><img src="img/actionbar.png" width="100%"></a></div>
+		<div style="margin-top:20px"><a href="#topic-list-page"><img src="img/actionbar.png" width="100%"></a></div>
 	    </div>
-        <div data-role="content" id="content">
-            <br>
-            <div id="article-list">
-            </div>
-            <a href="" id="show-button" data-role="button" onclick="play(); return false">Play!</a>
-        </div>
+	    <div data-role="content" style="margin:0; padding:0;">
+	    	<div style="margin-top:95%; border:none; width="100%"><a href="#thearticle"><img src="img/article2.png"/></a></div>	
+	    </div>
+    </div>
+
+    <div data-role="page" id="thearticle">
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#tarticle-list-page"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
+	    <div data-role="content">
+	    </div>
     </div>
 
 </body>

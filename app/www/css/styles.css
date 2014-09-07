@@ -159,18 +159,8 @@ label.error {
     font-family: 'Open Sans Condensed';
     width: 100%;
     font-size: 100%;
-}
-
-#topic-list-page #content-today{
-    background: url('../img/today.png') top center no-repeat !important;
-    background-attachment: fixed;
-    background-size: 100% 100% !important;
-    background-color: #eaeaea;
-    width: 100%;
-    height: 50%;
-    font-size: 100%;
-    position: fixed;
-    top:45%;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -184,4 +174,18 @@ label.error {
 #bottonintro div{
 	float:left;
 	margin: 0px 5px;
+}
+
+#article-list-page{
+    background: url('../img/bg4.png') top center no-repeat !important;
+    background-attachment: fixed;
+    background-size: 100% 100% !important;
+    background-color: #eaeaea;
+    overflow: hidden;
+    text-shadow: none;
+    font-family: 'Open Sans Condensed';
+    width: 100%;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
 }
