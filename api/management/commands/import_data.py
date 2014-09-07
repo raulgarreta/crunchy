@@ -1,6 +1,8 @@
 import re
 import json
 import datetime
+
+import nltk
 from django.utils import timezone
 
 # from django.core.management.base import NoArgsCommand
@@ -52,10 +54,15 @@ def import_json():
                     dt = datetime.datetime.strptime(date_string, '%Y/%m/%d')
                 else:
                     continue
+
+                sents = nltk.sent_tokenize(new['content'])
+                summary = ' '.join(sents[:5])
+
                 p = News.objects.create(url=new['url'][0:1024],
                                         title=new['title'],
                                         content=new['content'],
                                         tag=tag,
                                         image_url=new['url_image'][0:1024],
-                                        date=dt)
+                                        date=dt,
+                                        summary=summary)
 

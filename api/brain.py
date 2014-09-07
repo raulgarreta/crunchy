@@ -5,18 +5,23 @@ Created on Sep 6, 2014
 '''
 
 
-# from django.http import HttpResponse
-from django.shortcuts import render
-from django.db.models import Q
-
+import nltk
 import operator
 
 # from models import Post, TwitterUser
 from utils import *
 import json
 
-from api.models import UserProfile
+from api.models import UserProfile, News
 from django.contrib.auth.models import User
+
+
+def summarize():
+
+    for n in News.objects.all():
+        sents = nltk.sent_tokenize(n.content)
+        n.summary = ' '.join(sents[:5])
+        n.save()
 
 
 def profile(twitter_account):
