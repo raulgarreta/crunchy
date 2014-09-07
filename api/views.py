@@ -114,8 +114,8 @@ def recommend(user):
     for category, n in sorted_categories:
         total_classifications += n
 
-    max_articles = 10
-    delta_days = 3
+    max_articles = 20
+    delta_days = 7
 
     articles = []
     for category in sorted_categories:
@@ -151,6 +151,10 @@ class LogIn(APIView):
 
         categories = profile(twitter_account)
 
-        return Response(categories)
+        result = []
+        for cat, w in categories:
+            result.append(cat)
+
+        return Response(result)
 
 
