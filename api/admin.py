@@ -14,7 +14,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 
 class NewsAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ['tag']
 
 
 admin.site.register(UserProfile, UserProfileAdmin)
