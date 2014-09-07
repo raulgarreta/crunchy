@@ -1,7 +1,14 @@
-# Django settings for crunchy project.
+# -*- coding: utf-8 -*-
 
-DEBUG = True
+# Django settings for cruncy project.
+from os.path import join, abspath, dirname
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+DIRNAME = abspath(dirname(__file__).decode('utf-8'))
+
+ROOT_DIR = abspath(join(DIRNAME, '../..'))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -10,20 +17,29 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
+
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'linkme_db',
+#         'USER': 'linkme',
+#         'PASSWORD': 'linkme',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/raul/workspace/crunchy/sqlite.db',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'crunchy_db',
+        'USER': 'crunchy',
+        'PASSWORD': 'crunchy',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -61,29 +77,28 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = abspath(join(ROOT_DIR, 'static'))
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
+STATICFILES_DIRS = [
+    abspath(join(ROOT_DIR, 'assets')),
+]
 
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'y68t%pjxl)oq9b8-=y6i2@(^6sn&5el0@py0qup&b731!b#wj+'
+SECRET_KEY = 'bs-ll4(fe5aj+q135x1ol+fqfp7t21_6r1!=(q8aqycosvzwwz'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -93,7 +108,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -111,6 +128,8 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+
+    abspath(join(ROOT_DIR, 'templates')),
 )
 
 INSTALLED_APPS = (
@@ -121,9 +140,15 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
+    'south',
+    'api',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    'compressor',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -154,3 +179,29 @@ LOGGING = {
         },
     }
 }
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+    )
+}
+
+
+# # django-compressor app
+COMPRESS_PRECOMPILERS = [
+    ('text/less', 'lessc {infile} {outfile}'),
+]
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
+COMPRESS_OFFLINE = True
+
+
+
+
