@@ -16,13 +16,15 @@ def random_member_id():
 
 class News(models.Model):
     title = models.CharField(max_length=255)
-    date = models.DateField(null=True)
-    summary = models.TextField(max_length=500, null=True)
-    picture_url = models.URLField(null=True)
-    full_text = models.TextField(null=True)
+    date = models.DateTimeField(null=True)
+    summary = models.TextField(max_length=500, null=True, blank=True)
+    url = models.CharField(max_length=1024)
+    tag = models.TextField()
+    image_url = models.CharField(max_length=1024)
+    content = models.TextField()
 
     def __unicode__(self):
-        return str(self.id) + ' - ' + self.name
+        return str(self.id) + ' - ' + self.title
 
 
 class KeywordScore(models.Model):
@@ -55,8 +57,7 @@ def create_profile(sender, instance, created, **kwargs):
     """Create a matching profile whenever a user object is created."""
     if created:
         rand_id = random_member_id()
-        profile, new = UserProfile.objects.get_or_create(user=instance,
-                                                         defaults={ 'member_id': rand_id })
+        profile, new = UserProfile.objects.get_or_create(user=instance)
 
 
 @receiver(post_save, sender=User)

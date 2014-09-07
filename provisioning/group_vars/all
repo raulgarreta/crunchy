@@ -61,7 +61,7 @@ redis_port: 6379
 
 postgres_user: "postgres"
 
-postgres_db_name: "crunchy_db"
+postgres_db_name: "crunchy_db2"
 postgres_db_host: "localhost"
 postgres_db_port: "5432"
 

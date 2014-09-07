@@ -4,8 +4,6 @@ import json
 import urllib
 import urlparse
 
-import oauth2
-from linkedin import linkedin
 from django.contrib.auth.models import User
 from django.db import transaction
 from django.shortcuts import render_to_response

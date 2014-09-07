@@ -29,7 +29,7 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'crunchy_db',
+        'NAME': 'crunchy_db2',
         'USER': 'crunchy',
         'PASSWORD': 'crunchy',
         'HOST': 'localhost',
