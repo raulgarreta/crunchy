@@ -12,4 +12,7 @@ from api.models import News
 class NewsSerializer(ModelSerializer):
     class Meta:
         model = News
-        fields = ('title', 'date', 'summary', 'picture_url')
+        fields = ('id', 'title', 'date', 'tag', 'summary', 'image_url',
+                  'content', 'url')
+
+

@@ -218,10 +218,17 @@ TWITTER_AUTH = 'https://api.twitter.com/1.1/account/verify_credentials.json'
 # ----------- #
 # Monkeylearn API #
 # ----------- #
-MONKEYLEARN_CLASSIFY_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_text/'
-MONKEYLEARN_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_batch_text/'
+
+
+# MONKEYLEARN_CLASSIFY_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_text/'
+MONKEYLEARN_CLASSIFY_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/mPUywmJH/classify_text/'
+
+# MONKEYLEARN_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_batch_text/'
+MONKEYLEARN_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/mPUywmJH/classify_batch_text/'
+
+
 MONKEYLEARN_CLASSIFY_LANG_URL = 'https://api.monkeylearn.com/api/v1/categorizer/hDDngsX8/classify_text/'
-MONKEYLEARN_AUTHTOKEN = '3e39e12cdc032d3df28ff9179cc9988e01083696'
+MONKEYLEARN_AUTHTOKEN = '6cf55b81e8d69cb6a57ded1b3bdd9d6f1fe2f150'
 # MONKEYLEARN_AUTHTOKEN = 'af280d5de7f613a4271f625d3ebb7c79c1b3e1d9'
 
 # ----------- #
@@ -229,7 +236,7 @@ MONKEYLEARN_AUTHTOKEN = '3e39e12cdc032d3df28ff9179cc9988e01083696'
 # ----------- #
 
 MONKEYLEARN_LANG_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/hDDngsX8/classify_batch_text/'
-MONKEYLEARN_LANG_AUTHTOKEN = '3e39e12cdc032d3df28ff9179cc9988e01083696'
+MONKEYLEARN_LANG_AUTHTOKEN = '6cf55b81e8d69cb6a57ded1b3bdd9d6f1fe2f150'
 
 
 

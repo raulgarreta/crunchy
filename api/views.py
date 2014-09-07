@@ -91,9 +91,15 @@ class LastNewsList(APIView):
         result = []
         news_list = News.objects.all()
 
+#         for n in news_list:
+#             result.append((n.id, n.title, n.date, n.summary,
+#                            n.url, n.tag, n.image_url, n.content))
+
+
+
         for n in news_list:
-            result.append((n.id, n.title, n.date, n.summary,
-                           n.url, n.tag, n.image_url, n.content))
+            result.append(NewsSerializer(n).data)
+
 
         return Response(result)
 

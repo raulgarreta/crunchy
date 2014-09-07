@@ -55,7 +55,6 @@ class UserProfile(models.Model):
     sorted_categories = models.TextField()
 
 
-
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     """Create a matching profile whenever a user object is created."""
