@@ -10,6 +10,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -99,6 +100,7 @@ public class FeedListActivity extends Activity {
 
 			// getting JSON string from URL
 			JSONObject json = getJSONFromUrl(url);
+            Log.i("api result:",json.toString());
 
 			//parsing json data
 			parseJson(json);
@@ -116,10 +118,10 @@ public class FeedListActivity extends Activity {
 		try {
 			// defaultHttpClient
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost httpPost = new HttpPost(url);
-            httpPost.setHeader("Authorization", "Token a4f9863905788d9e08db6003c1dcb91e45955beb");
+            HttpGet httpget = new HttpGet(url);
+            httpget.addHeader("Authorization", "Token a4f9863905788d9e08db6003c1dcb91e45955beb");
 
-			HttpResponse httpResponse = httpClient.execute(httpPost);
+			HttpResponse httpResponse = httpClient.execute(httpget);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			is = httpEntity.getContent();
 
@@ -156,9 +158,12 @@ public class FeedListActivity extends Activity {
 
 			// parsing json object
 			if (json.getString("status").equalsIgnoreCase("ok")) {
-				JSONArray posts = json.getJSONArray("");
 
+				//JSONArray posts = json.getJSONArray(json.toString());
+
+                /*
 				feedList = new ArrayList<FeedItem>();
+
 
 				for (int i = 0; i < 5; i++) {
 					JSONObject post = (JSONObject) posts.getJSONObject(i);
@@ -179,6 +184,7 @@ public class FeedListActivity extends Activity {
 
 					feedList.add(item);
 				}
+				*/
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

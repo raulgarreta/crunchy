@@ -8,6 +8,12 @@
         revision="20.0.0"
         sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
+        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/classes-620cd2b301eafbd1dfe18ae57ad01c49fb9bc292.jar"
+        jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8f11f56e350eacabf2273f646d981356eea0ed77"/>
+    <item
         dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-7dcce202d6c07bbc7877c1a936e910b354c94c4c.jar"
         jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"
@@ -19,11 +25,5 @@
         jumboMode="false"
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
-    <item
-        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/classes-620cd2b301eafbd1dfe18ae57ad01c49fb9bc292.jar"
-        jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/classes.jar"
-        jumboMode="false"
-        revision="20.0.0"
-        sha1="8f11f56e350eacabf2273f646d981356eea0ed77"/>
 
 </pre-dex-items>
