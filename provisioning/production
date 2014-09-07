@@ -1,5 +1,5 @@
 [onebox_servers]
-ec2-54-183-53-118.us-west-1.compute.amazonaws.com
+ec2-54-176-156-202.us-west-1.compute.amazonaws.com
 
 [production:children]
 onebox_servers

@@ -203,5 +203,36 @@ COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 COMPRESS_OFFLINE = True
 
 
+# ----------- #
+# Twitter API #
+# ----------- #
+
+TWITTER_CONSUMER_KEY = 'e5nvCEf47j5gWvSkwnvGRg'
+TWITTER_CONSUMER_SECRET = 'epqawTF3DDCa1H6WhhITycZrCSJuJ0bjGl8hpJkEZw'
+TWITTER_ACCESS_TOKEN_KEY = '2182812798-Avp4hD5H1T75icyI54BaJAllXTT2AfEIE7e8tUY'
+TWITTER_ACCESS_TOKEN_SECRET = 'DEHjdqGee6yPt0vbFSglKs0g0ZB0NTQmYLK9TdFMVOhZq'
+TWITTER_GET_USERS_URL = 'https://api.twitter.com/1.1/users/lookup.json?user_id='
+TWITTER_AUTH = 'https://api.twitter.com/1.1/account/verify_credentials.json'
+
+
+# ----------- #
+# Monkeylearn API #
+# ----------- #
+MONKEYLEARN_CLASSIFY_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_text/'
+MONKEYLEARN_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/FBaJ7Bzk/classify_batch_text/'
+MONKEYLEARN_CLASSIFY_LANG_URL = 'https://api.monkeylearn.com/api/v1/categorizer/hDDngsX8/classify_text/'
+MONKEYLEARN_AUTHTOKEN = '3e39e12cdc032d3df28ff9179cc9988e01083696'
+# MONKEYLEARN_AUTHTOKEN = 'af280d5de7f613a4271f625d3ebb7c79c1b3e1d9'
+
+# ----------- #
+# Monkeylearn language detection API #
+# ----------- #
+
+MONKEYLEARN_LANG_CLASSIFY_BATCH_TEXT_URL = 'https://api.monkeylearn.com/api/v1/categorizer/hDDngsX8/classify_batch_text/'
+MONKEYLEARN_LANG_AUTHTOKEN = '3e39e12cdc032d3df28ff9179cc9988e01083696'
+
+
+
+
 
 

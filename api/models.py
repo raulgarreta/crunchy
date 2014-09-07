@@ -51,6 +51,10 @@ class UserProfile(models.Model):
     last_news = models.ManyToManyField(News, related_name='users_last_news')
     key_token = models.CharField(max_length=255, blank=True, null=True)
 
+    twitter_account = models.CharField(max_length=100, db_index=True)
+    sorted_categories = models.TextField()
+
+
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):

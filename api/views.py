@@ -88,39 +88,12 @@ class LastNewsList(APIView):
     Returns a list of tuples (id, name, description, type)
     '''
     def get(self, request, format=None):
-        lat = request.QUERY_PARAMS.get('lat', None)
-        if lat is None:
-            raise ParseError(detail="Must specify a valid lat argument.")
-        lon = request.QUERY_PARAMS.get('lon', None)
-        if lon is None:
-            raise ParseError(detail="Must specify a valid lon argument.")
-        # results = Event.objects.filter(finished=False).values_list("id", "name")
-
         result = []
-        events = Event.objects.raw(
-#         '''
-#         SELECT id, name FROM
-#           (SELECT id, name, lat, lon, (3959 * acos(cos(radians(%s)) * cos(radians(lat)) *
-#                                              cos(radians(lon) - radians(%s)) +
-#                                              sin(radians(%s)) * sin(radians(lat))))
-#            AS distance
-#            FROM api_event WHERE not finished) AS distances
-#         WHERE distance < 1
-#         ORDER BY distance
-#         OFFSET 0
-#         LIMIT 20;
-#         ''',
-#         [lat, lon, lat])
+        news_list = News.objects.all()
 
-        '''
-        SELECT id, name, lat, lon, picture_url, starts, css FROM api_event WHERE
-        abs(lat - %s) < 0.018 and abs(lon - %s) < 0.018 and not finished;
-        ''',
-        [lat, lon])
-
-        for event in events:
-            result.append((event.id, event.name, event.lat, event.lon,
-                           event.picture_url, event.starts, event.css))
+        for n in news_list:
+            result.append((n.id, n.title, n.date, n.summary,
+                           n.url, n.tag, n.image_url, n.content))
 
         return Response(result)
 
