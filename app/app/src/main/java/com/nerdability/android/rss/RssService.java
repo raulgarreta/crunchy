@@ -49,7 +49,7 @@ public class RssService extends AsyncTask<String, Void, List<Article>> {
 		articleListFrag.getActivity().runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				/* for (Article a : articles){
+				 for (Article a : articles){
 					Log.d("DB", "Searching DB for GUID: " + a.getGuid());
 					DbAdapter dba = new DbAdapter(articleListFrag.getActivity());
 		            dba.openToRead();
@@ -70,7 +70,7 @@ public class RssService extends AsyncTask<String, Void, List<Article>> {
 				ArticleListAdapter adapter = new ArticleListAdapter(articleListFrag.getActivity(), articles);
 				articleListFrag.setListAdapter(adapter);
 				adapter.notifyDataSetChanged();
-				*/
+
 				
 			}
 		});
