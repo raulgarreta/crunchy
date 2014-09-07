@@ -15,7 +15,7 @@ import com.nerdability.android.rss.RssService;
 public class ArticleListFragment extends ListFragment {
 
     private static final String STATE_ACTIVATED_POSITION = "activated_position";
-    private static final String BLOG_URL = "http://feeds.feedburner.com/TechCrunch/startups";
+    private static final String BLOG_URL = "http://feeds.feedburner.com/TechCrunch/startups/";
     private Callbacks mCallbacks = sDummyCallbacks;
     private int mActivatedPosition = ListView.INVALID_POSITION;
     private RssService rssService;

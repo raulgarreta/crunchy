@@ -2,16 +2,28 @@
 <pre-dex-items>
 
     <item
-        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-2484d88715cbcdaf306e7f8449d6546e84c1520d.jar"
-        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/18.0.0/support-v4-18.0.0.jar"
+        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/support-annotations-20.0.0-bca9cd8c8082330ef7549e0398af852faae531fd.jar"
+        jar="/Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-annotations/20.0.0/support-annotations-20.0.0.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="44ec51e9d395a47aab135e5e1b556c0007442156"/>
+        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
     <item
         dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/classes-620cd2b301eafbd1dfe18ae57ad01c49fb9bc292.jar"
         jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/18.0.0/classes.jar"
         jumboMode="false"
         revision="20.0.0"
         sha1="8f11f56e350eacabf2273f646d981356eea0ed77"/>
+    <item
+        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-7dcce202d6c07bbc7877c1a936e910b354c94c4c.jar"
+        jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+    <item
+        dex="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/pre-dexed/debug/classes-c2c6a73d929d493b2719dfe8ec829edd3e015e83.jar"
+        jar="/Applications/XAMPP/xamppfiles/htdocs/crunchy/app/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
 
 </pre-dex-items>

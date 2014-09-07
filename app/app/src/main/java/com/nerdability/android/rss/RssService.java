@@ -84,7 +84,7 @@ public class RssService extends AsyncTask<String, Void, List<Article>> {
 
 		URL url = null;
 		try {
-
+            Log.w("AndroidParseXMLActivity", "Start");
 			SAXParserFactory spf = SAXParserFactory.newInstance();
 			SAXParser sp = spf.newSAXParser();
 			XMLReader xr = sp.getXMLReader();
@@ -97,6 +97,7 @@ public class RssService extends AsyncTask<String, Void, List<Article>> {
 
 
 			Log.e("ASYNC", "PARSING FINISHED");
+            Log.e("articlelist", rh.getArticleList().toString());
 			return rh.getArticleList();
 
 		} catch (IOException e) {

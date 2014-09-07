@@ -24,6 +24,13 @@ import com.nerdability.android.db.DbAdapter;
 import com.nerdability.android.rss.domain.Article;
 import com.nerdability.android.util.DateUtils;
 
+//WEAR thing
+
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.NotificationCompat.WearableExtender;
+
+
 public class ArticleDetailFragment extends Fragment {
 
     public static final String ARG_ITEM_ID = "item_id";
