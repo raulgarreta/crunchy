@@ -27,15 +27,18 @@ urlpatterns = patterns(
     url(r'^last_news_list/$',
         LastNewsList.as_view(), name='last_news_list'),
 
+    url(r'^login/$',
+        LogIn.as_view(), name='login'),
+
 )
 
-if settings.DEBUG:
-    urlpatterns += patterns(
-        '',
-
-        url(r'^login/$',
-            LogIn.as_view(), name='login'),
-
-    )
+# if settings.DEBUG:
+#     urlpatterns += patterns(
+#         '',
+#
+#         url(r'^login/$',
+#             LogIn.as_view(), name='login'),
+#
+#     )
 
 

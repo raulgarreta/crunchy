@@ -54,6 +54,9 @@ class UserProfile(models.Model):
     twitter_account = models.CharField(max_length=100, db_index=True)
     sorted_categories = models.TextField()
 
+    def __unicode__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
