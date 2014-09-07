@@ -13,10 +13,10 @@ class TechCrunchSpider(CrawlSpider):
     rules = (
         # Extract links matching 'category.php' (but not matching 'subsection.php')
         # and follow links from them (since no callback means follow=True by default).
-        Rule(LinkExtractor(allow=('/page/', ))),
+        Rule(LinkExtractor(allow=('/page/',))),
 
         # Extract links matching 'item.php' and parse them with the spider's method parse_item
-        Rule(LinkExtractor(allow=('/2014/\d\d/\d\d/', )), callback='parse_item'),
+        Rule(LinkExtractor(allow=('/2014/09/\d\d/',)), callback='parse_item'),
     )
 
     def parse_item(self, response):
