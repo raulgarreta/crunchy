@@ -18,11 +18,11 @@ public class ArticleDetailActivity extends FragmentActivity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            Bundle arguments = new Bundle();
-            arguments.putString(ArticleDetailFragment.ARG_ITEM_ID,
-                    getIntent().getStringExtra(ArticleDetailFragment.ARG_ITEM_ID));
+            Bundle arguments = getIntent().getBundleExtra("arguments");
             ArticleDetailFragment fragment = new ArticleDetailFragment();
+
             fragment.setArguments(arguments);
+
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.article_detail_container, fragment)
                     .commit();

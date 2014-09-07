@@ -44,22 +44,26 @@ public class ArticleListActivity extends FragmentActivity implements ArticleList
         ArticleListAdapter adapter = (ArticleListAdapter) ((ArticleListFragment) getSupportFragmentManager().findFragmentById(R.id.article_list)).getListAdapter();
         adapter.notifyDataSetChanged();
         Log.e("CHANGE", "Changing to read: ");
-        
-        
+
+
         //load article details to main panel
+        Bundle arguments = new Bundle();
+        arguments.putSerializable (Article.KEY, selected);
+
         if (mTwoPane) {
-            Bundle arguments = new Bundle();
-            arguments.putSerializable (Article.KEY, selected);
-            
             ArticleDetailFragment fragment = new ArticleDetailFragment();
+
             fragment.setArguments(arguments);
+
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.article_detail_container, fragment)
                     .commit();
 
         } else {
             Intent detailIntent = new Intent(this, ArticleDetailActivity.class);
-            detailIntent.putExtra(ArticleDetailFragment.ARG_ITEM_ID, id);
+
+            detailIntent.putExtra("arguments", arguments);
+
             startActivity(detailIntent);
         }
     }
