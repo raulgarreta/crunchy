@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Linkme</title>
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css" />
+
+<!-- <link type="text/css" href="css/jqm-datebox-1.1.0.min.css" rel="stylesheet" />  -->
+
+<link rel="stylesheet" href="css/styles.css" />
+
+<!-- <script type="text/javascript" src="phonegap.js"></script> -->
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/jquery.mobile-1.4.0.min.js"></script>
+<script src="js/jquery.Jcrop.min.js"></script>
+
+
+<script src="js/scripts.js"></script>
+</head>
+<body>
+	<!-- ---------------- -->
+	<!-- Login page -->
+	<!-- ---------------- -->
+	<div data-role="page" id="page1">
+		
+		<div data-role="content">
+		
+		<form id="form1">
+		<div id="textsearch">
+        <input type="search" name="search1" placeholder="twitter" id="search1" value="">
+		</div>
+		<div id="bottonintro">
+	    <div data-role="button" href="#"><img src="img/fbbt.png" width="50" /></div>
+	    <div><a href="#page2"><img src="img/twbt.png" width="50" /></a></div>
+	    <div data-role="button" href="#"><img src="img/emailbt.png" width="50" /></div>
+		</div>
+		</div>
+		
+	</div>
+
+	<!-- preferences -->
+
+	<div data-role="page" id="page2">
+		<div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><img src="img/actionbar.png" width="100%"></div>
+	    </div>
+	    <div data-role="content">
+	    	<h1 style="color:#fff">Your Profile:</h1>
+	    	<form>
+		    <fieldset data-role="controlgroup" id="categories">
+		     <input type="checkbox" name="checkbox-v-2a" id="checkbox-v-2a" checked="checked"><label for="checkbox-v-2a">gadgets</label>
+                <input type="checkbox" name="checkbox-v-2b" id="checkbox-v-2b" checked="checked"><label for="checkbox-v-2b">android</label>
+                <input type="checkbox" name="checkbox-v-2c" id="checkbox-v-2c" checked="checked"><label for="checkbox-v-2c">startups</label>
+                <input type="checkbox" name="checkbox-v-2d" id="checkbox-v-2d" checked="checked"><label for="checkbox-v-2c">mobile</label>
+		    </fieldset>
+		</form>
+	    </div>
+	    <div data-role="footer" data-position="fixed" style="padding:0; margin:0; background-color:#282b36; border:none">
+	    <a href="#topic-list-page" style="padding:0;margin:0; border:none; background-color:#282b36""><img src="img/bt1.png" height="100%" width="100%" style="border:none"></a>
+	    </div>
+	</div>
+
+
+
+	<div data-role="page" id="topic-list-page">
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#page2"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
+        <div data-role="content" id="content-today" style="padding: 0; margin: 0;">
+           <div style="margin-top:53%; border:none; width="100%"><a id="playerobutton" href="#article-list-page" style="border:none"><img src="img/today.png" width="100%" style="border:none"></a></div>
+        </div>
+    </div>
+
+    <div data-role="page" id="article-list-page">
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#topic-list-page"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
+	    <div data-role="content" style="margin:0; padding:0;">
+	    	<div style="margin-top:95%; border:none; width="100%"><a href="#thearticle"><img src="img/article2.png"/></a></div>	
+	    </div>
+	    <div data-role="footer" data-position="fixed" style="">
+	    	<div id="playero"></div>
+	    	</div>
+	    </div>
+    </div>
+
+    <div data-role="page" id="thearticle">
+        <div data-role="header" style="background-color:#232736" data-position="fixed" data-shadow="true">
+		<div style="margin-top:20px"><a href="#topic-list-page"><img src="img/actionbar.png" width="100%"></a></div>
+	    </div>
+	    <div data-role="content">
+	    	<div style="margin-top:50px">
+	    	
+	    </div>
+    </div>
+ <script>
+ 	$(document).ready(function() {
+ 	$("#playerobutton").click(function() {
+
+ 	var noti = "We ve already seen a flurry of announcements around Android Wear hardware this week but Google also has some software updates in the works that it will release over the course";
+
+ 	$('#playero').append('<audio id="a" controls="true"><source src="http://tts-api.com/tts.mp3?q=' + noti + '" type=audio/mpeg></audio>');
+	});
+    });
+    var audio = document.getElementById('a');
+ 	audio.autoplay = true;
+    audio.addEventListener('touchstart', function() { audio.play(); }, false);
+
+ 	</script>
+</body>
+</html>
+
